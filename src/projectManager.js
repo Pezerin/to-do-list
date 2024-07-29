@@ -1,4 +1,4 @@
-const projectManager = (function () {
+export const projectManager = (function () {
     let projects = [];
 
     function createProject(title) {
