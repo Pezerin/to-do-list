@@ -1,5 +1,6 @@
 export const projectManager = (function () {
     let projects = [];
+    let activeProject = 0;
 
     function createProject(title) {
         let todos = [];
@@ -11,8 +12,9 @@ export const projectManager = (function () {
         }
     
         const addTodo = (title, desc, due, priority, isDone) => {
-            todo = createTodo(title, desc, due, priority, isDone);
+            const todo = createTodo(title, desc, due, priority, isDone);
             todos.push(todo);
+            console.log(todos);
         };
     
         const editTodo = (i, title, desc, due, priority) => {
@@ -28,8 +30,9 @@ export const projectManager = (function () {
     }
 
     function addProject(title) {
-        project = createProject(title);
+        const project = createProject(title);
         projects.push(project);
+        console.log(projects);
     }
 
     function editProject(i, title) {
@@ -38,5 +41,5 @@ export const projectManager = (function () {
 
     const deleteProject = (i) => projects.splice(i, 1);
 
-    return { projects, addProject, editProject, deleteProject };
+    return { projects, activeProject, addProject, editProject, deleteProject };
 })();
