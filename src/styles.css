@@ -38,13 +38,35 @@ body {
     flex: 1;
 }
 
+#projects {
+    display: flex;
+    flex-direction: column;
+}
+
+.project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.project button {
+    background: none;
+    border: none;
+}
+
 #add {
     display: flex;
     justify-content: end;
     margin: 25px;
 }
 
-button {
+.button {
     background-color: var(--dark-gray);
     color: white;
     border: 0px;

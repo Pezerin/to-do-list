@@ -14,7 +14,6 @@ export const projectManager = (function () {
         const addTodo = (title, desc, due, priority, isDone) => {
             const todo = createTodo(title, desc, due, priority, isDone);
             todos.push(todo);
-            console.log(todos);
         };
     
         const editTodo = (i, title, desc, due, priority) => {
@@ -32,7 +31,6 @@ export const projectManager = (function () {
     function addProject(title) {
         const project = createProject(title);
         projects.push(project);
-        console.log(projects);
     }
 
     function editProject(i, title) {
