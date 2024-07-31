@@ -8,6 +8,9 @@ export const displayController = (function () {
 
     const projectDialog = document.querySelector("#project-dialog");
     const projectForm = document.querySelector("#project-form");
+    let editProject = false;
+    let editProjectIndex = null;
+
     const projectTitle = document.querySelector("#project-title");
     const submitProject = document.querySelector("#submit-project");
 
@@ -16,6 +19,9 @@ export const displayController = (function () {
     
     const taskDialog = document.querySelector("#task-dialog");
     const taskForm = document.querySelector("#task-form");
+    let editTask = false;
+    let editTaskIndex = null;
+
     const taskTitle = document.querySelector("#task-title");
     const desc = document.querySelector("#desc");
     const due = document.querySelector("#due");
@@ -41,8 +47,18 @@ export const displayController = (function () {
 
             const icons = document.createElement("div");
             icons.classList.add("icons");
+
             const editButton = document.createElement("button");
             editButton.classList.add(`${i}`);
+
+            editButton.addEventListener("click", () => {
+                projectForm.reset();
+                projectTitle.value = projectManager.projects[i].title;
+                editProject = true;
+                editProjectIndex = i;
+                projectDialog.showModal();
+            });
+
             const deleteButton = document.createElement("button");
             deleteButton.classList.add(`${i}`);
 
@@ -75,9 +91,16 @@ export const displayController = (function () {
     });
 
     submitProject.addEventListener("click", () => {
-        const title = projectTitle.value;
-        projectManager.addProject(title);
-        displayProjects();
+        if (!editProject) {
+            const title = projectTitle.value;
+            projectManager.addProject(title);
+            displayProjects();
+        } else {
+            const title = projectTitle.value;
+            projectManager.editProject(editProjectIndex, title);
+            editProject = false;
+            displayProjects();
+        }
     });
 
     addTaskButton.addEventListener("click", () => {
