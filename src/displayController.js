@@ -62,6 +62,11 @@ export const displayController = (function () {
             const deleteButton = document.createElement("button");
             deleteButton.classList.add(`${i}`);
 
+            deleteButton.addEventListener("click", () => {
+                projectManager.deleteProject(i);
+                displayProjects();
+            });
+
             const edit = new Image();
             edit.src = pencil;
             edit.width = 20;
