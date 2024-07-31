@@ -7,6 +7,7 @@ export const displayController = (function () {
     const addProjectButton = document.querySelector("#add-project");
 
     const projectDialog = document.querySelector("#project-dialog");
+    const projectForm = document.querySelector("#project-form");
     const projectTitle = document.querySelector("#project-title");
     const submitProject = document.querySelector("#submit-project");
 
@@ -14,6 +15,7 @@ export const displayController = (function () {
     const addTaskButton = document.querySelector("#add-task");
     
     const taskDialog = document.querySelector("#task-dialog");
+    const taskForm = document.querySelector("#task-form");
     const taskTitle = document.querySelector("#task-title");
     const desc = document.querySelector("#desc");
     const due = document.querySelector("#due");
@@ -25,21 +27,24 @@ export const displayController = (function () {
     const displayProjects = () => {
         projects.innerHTML = "";
 
-        projectManager.projects.forEach(project => {
+        for (let i = 0; i < projectManager.projects.length; i++) {
 
             const div = document.createElement("div");
             div.classList.add("project");
 
             const button = document.createElement("button");
+            button.classList.add(`${i}`);
 
             const h2 = document.createElement("h2");
-            h2.textContent = project.title;
+            h2.textContent = projectManager.projects[i].title;
             button.appendChild(h2);
 
             const icons = document.createElement("div");
             icons.classList.add("icons");
             const editButton = document.createElement("button");
+            editButton.classList.add(`${i}`);
             const deleteButton = document.createElement("button");
+            deleteButton.classList.add(`${i}`);
 
             const edit = new Image();
             edit.src = pencil;
@@ -58,13 +63,14 @@ export const displayController = (function () {
             div.appendChild(icons);
 
             projects.appendChild(div);
-        });
+        }
     };
 
     projectManager.addProject("Project");
     displayProjects();
 
     addProjectButton.addEventListener("click", () => {
+        projectForm.reset();
         projectDialog.showModal();
     });
 
@@ -75,6 +81,7 @@ export const displayController = (function () {
     });
 
     addTaskButton.addEventListener("click", () => {
+        taskForm.reset();
         taskDialog.showModal();
     });
 
