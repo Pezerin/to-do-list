@@ -27,6 +27,9 @@
     </div>
     <div id="content">
         <h1 id="project-header">Project</h1>
+        <div id="tasks">
+
+        </div>
         <button id="add-task" class="button">Add Task</button>
         <dialog id="task-dialog">
             <form method="dialog" id="task-form">
@@ -34,24 +37,21 @@
                 <input type="text" name="task-title" id="task-title" required>
     
                 <label for="desc">Description</label>
-                <input type="text" name="desc" id="desc">
+                <input type="text" name="desc" id="desc" required>
     
                 <label for="due">Due Date</label>
                 <input type="date" name="due" id="due" required>
     
                 <label for="priority">Priority</label>
                 <select name="priority" id="priority" required>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
     
                 <button type="submit" id="submit-task" class="button">Add</button>
             </form>
         </dialog>
-        <div id="tasks">
-
-        </div>
     </div>
 </body>
 </html>

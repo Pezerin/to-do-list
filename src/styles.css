@@ -84,6 +84,54 @@ body {
     margin-bottom: 20px;
 }
 
+#tasks {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.task {
+    background-color: white;
+    height: 250px;
+    width: 250px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.task .icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.task button {
+    background: none;
+    border: none;
+}
+
+.low {
+    border: 3px solid green;
+    border-radius: 25px;
+}
+
+.medium {
+    border: 3px solid orange;
+    border-radius: 25px;
+}
+
+.high {
+    border: 3px solid red;
+    border-radius: 25px;
+}
+
 dialog {
     position: fixed;
     top: 50%;
