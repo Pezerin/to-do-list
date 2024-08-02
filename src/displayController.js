@@ -72,7 +72,7 @@ export const displayController = (function () {
                 displayProjects();
 
                 if (projectManager.projects.length > 0) {
-                    projectManager.activeProject = i-1;
+                    projectManager.activeProject = Math.max(0, i-1);
                     displayTasks();
                 } else {
                     projectHeader.textContent = "";
