@@ -187,9 +187,6 @@ export const displayController = (function () {
         return taskTitle.value.trim() !== "" && desc.value.trim() !== "" && due.value.trim() !== "" && priority.value.trim() !== "";
     };
 
-    projectManager.addProject("Project");
-    displayProjects();
-
     addProjectButton.addEventListener("click", () => {
         projectForm.reset();
         projectDialog.showModal();
