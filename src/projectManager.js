@@ -30,7 +30,7 @@ export const projectManager = (function () {
             }
         } 
         
-        if (savedProjects.length === 0) {
+        if (savedProjects.length < 1) {
             addProject("Project");
         }
     

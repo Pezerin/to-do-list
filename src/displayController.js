@@ -215,6 +215,9 @@ export const displayController = (function () {
     });
 
     addTaskButton.addEventListener("click", () => {
+        if (projectManager.projects.length < 1) {
+            return;
+        }
         taskForm.reset();
         taskDialog.showModal();
     });
