@@ -11,27 +11,23 @@ export const projectManager = (function () {
         const savedProjects = JSON.parse(localStorage.getItem("projects"));
         const savedActiveProject = JSON.parse(localStorage.getItem("activeProject"));
     
-        if (savedProjects) {
+        if (savedProjects && savedProjects.length > 0) {
             for (let i = 0; i < savedProjects.length; i++) {
                 const project = createProject(savedProjects[i].title);
     
                 for (let j = 0; j < savedProjects[i].todos.length; j++) {
                     const todo = savedProjects[i].todos[j];
-                    project.addTodo(
-                        todo.title,
-                        todo.desc,
-                        todo.due,
-                        todo.priority,
-                        todo.isDone
-                    );
+                    project.todos.push(project.createTodo(
+                        todo.title, todo.desc, todo.due, todo.priority, todo.isDone
+                    ));
                 }
     
                 projects.push(project);
             }
         } 
         
-        if (savedProjects.length < 1) {
-            addProject("Project");
+        if (savedProjects.length < 1 || !savedProjects) {
+            projects = createProject("Project");
         }
     
         if (savedActiveProject !== null) {
@@ -67,7 +63,7 @@ export const projectManager = (function () {
             saveProjects();
         }
     
-        return { title, todos, addTodo, editTodo, deleteTodo };
+        return { title, todos, createTodo, addTodo, editTodo, deleteTodo };
     }
 
     function addProject(title) {
@@ -86,5 +82,5 @@ export const projectManager = (function () {
         saveProjects();
     }
 
-    return { projects, activeProject, saveProjects, loadProjects, addProject, editProject, deleteProject };
+    return { projects, activeProject, saveProjects, loadProjects, createProject, addProject, editProject, deleteProject };
 })();
