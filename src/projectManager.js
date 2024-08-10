@@ -11,6 +11,11 @@ export const projectManager = (function () {
         const savedProjects = JSON.parse(localStorage.getItem("projects"));
         const savedActiveProject = JSON.parse(localStorage.getItem("activeProject"));
     
+        if (!savedProjects) {
+            projects.push(createProject("Project"));
+            return;
+        }
+
         if (savedProjects && savedProjects.length > 0) {
             for (let i = 0; i < savedProjects.length; i++) {
                 const project = createProject(savedProjects[i].title);
@@ -24,10 +29,6 @@ export const projectManager = (function () {
     
                 projects.push(project);
             }
-        } 
-        
-        if (savedProjects.length < 1 || !savedProjects) {
-            projects = createProject("Project");
         }
     
         if (savedActiveProject !== null) {
